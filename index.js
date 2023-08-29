@@ -1,24 +1,24 @@
-function showMatchedPhones(){
-  let searchText = document.getElementById('search-text').value;
-  document.getElementById('search-text').value = '';
+function showMatchedPhones(isShowAll){
+  const searchText = document.getElementById('search-text').value;
 fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
   .then(res => res.json())
-  .then(apiAllData => showPhones(apiAllData))
+  .then(apiAllData => showPhones(apiAllData, isShowAll))
   
 }
 
-function showPhones(apiAllData) {
+function showPhones(apiAllData, isShowAll) {
   // console.log(apiAllData.data);
   let allData = apiAllData.data;
   const totalData = allData.length;
   const showAllBtn = document.getElementById('show-all-btn');
-  if(totalData>10){
+  if(totalData>10 && !isShowAll){
     const showTenData = allData.slice(0,10);
     allData = showTenData;
     showAllBtn.parentNode.classList.remove('hidden');
   }
   else{
     showAllBtn.parentNode.classList.add('hidden');
+    document.getElementById('search-text').value = '';
   }
   const showAllPhones = document.getElementById('show-all-phones');
   showAllPhones.textContent='';
@@ -42,3 +42,7 @@ function showPhones(apiAllData) {
  }
 }
 
+function showAllItems(){
+  // console.log('HELLO')
+showMatchedPhones(true);
+}

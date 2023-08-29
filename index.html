@@ -37,7 +37,7 @@
       <img class="z-10" src="images/search.svg" alt="">
       <input class="text-xs z-0 py-2 pl-11 -ml-10 rounded-xl bg-white text-black" type="text" name="" id="search-text"
         placeholder="type phone name here..">
-      <button onclick="showMatchedPhones()" class="btn btn-neutral">Search</button>
+      <button onclick="showMatchedPhones(false)" class="btn btn-neutral">Search</button>
     </p>
 
     <!-- API phone section starts here -->
@@ -49,7 +49,7 @@
   </main>
   <!-- JavaScript starts -->
   <div class="text-center mt-11 mb-11 hidden">
-    <button id="show-all-btn" class="btn btn-active btn-neutral hover:bg-white hover:text-black">Show all phones..</button>
+    <button id="show-all-btn" onclick="showAllItems()" class="btn btn-active btn-neutral hover:bg-white hover:text-black">Show all phones..</button>
   </div>
   <script src="index.js"></script>
 </body>
