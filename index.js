@@ -11,6 +11,7 @@ fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
 }
 
 function showPhones(apiAllData, isShowAll) {
+  
   loadingSpinner.classList.add('hidden');
   let allData = apiAllData.data;
   const totalData = allData.length;
@@ -45,7 +46,7 @@ return;
       <h2 class="card-title">${data.phone_name}</h2>
       <p>There are many variations of passages</p>
       <div class="card-actions">
-        <button onclick="showModals()" class="btn btn-primary">Show Details</button>
+        <button onclick="showModals(this)" class="btn btn-primary">Show Details</button>
       </div>
     </div>
   </div>
@@ -60,8 +61,9 @@ showMatchedPhones(true);
 
 
 // show modals
-function showModals(){
- console.log('helloo..') 
+function showModals(event){
+//  console.log(event.parentNode.parentNode.children[0].innerText) 
+ document.getElementById('name').innerText = event.parentNode.parentNode.children[0].innerText;
  const showDetailsModal = document.getElementById('show-details-modal');
  showDetailsModal.showModal();
 }
