@@ -43,9 +43,9 @@ return;
     </figure>
     <div class="card-body items-center text-center">
       <h2 class="card-title">${data.phone_name}</h2>
-      <p>There are many variations of passages of available, but the majority have suffered</p>
+      <p>There are many variations of passages</p>
       <div class="card-actions">
-        <button class="btn btn-primary">Show Details</button>
+        <button onclick="showModals()" class="btn btn-primary">Show Details</button>
       </div>
     </div>
   </div>
@@ -56,4 +56,12 @@ return;
 
 function showAllItems(){
 showMatchedPhones(true);
+}
+
+
+// show modals
+function showModals(){
+ console.log('helloo..') 
+ const showDetailsModal = document.getElementById('show-details-modal');
+ showDetailsModal.showModal();
 }
