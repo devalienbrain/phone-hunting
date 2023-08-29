@@ -35,19 +35,22 @@
     <h3>Search your phone</h3>
     <p class="my-5 flex justify-center gap-2">
       <img class="z-10" src="images/search.svg" alt="">
-      <input class="text-xs z-0 py-2 pl-11 -ml-10 rounded-xl bg-white text-black" type="text" name="" id=""
+      <input class="text-xs z-0 py-2 pl-11 -ml-10 rounded-xl bg-white text-black" type="text" name="" id="search-text"
         placeholder="type phone name here..">
-      <button class="btn btn-neutral">Search</button>
+      <button onclick="showMatchedPhones()" class="btn btn-neutral">Search</button>
     </p>
 
     <!-- API phone section starts here -->
     <section class="mt-11">
-      <div id="show-all-phones" class="flex flex-wrap justify-around gap-2">
+      <div id="show-all-phones" class="flex flex-wrap justify-around gap-7 text-xs">
         <!-- Dyanamic phone cards will be shown here -->
       </div>
     </section>
   </main>
   <!-- JavaScript starts -->
+  <div class="text-center mt-11 mb-11 hidden">
+    <button class="btn btn-active btn-neutral hover:bg-white hover:text-black">Show all phones..</button>
+  </div>
   <script src="index.js"></script>
 </body>
 

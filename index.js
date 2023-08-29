@@ -1,18 +1,21 @@
-fetch('https://openapi.programming-hero.com/api/phones?search=iphone')
+function showMatchedPhones(){
+  let searchText = document.getElementById('search-text').value;
+  document.getElementById('search-text').value = '';
+fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
   .then(res => res.json())
-  .then(apiAllData => {
-    // console.log(apiData);
-    showPhones(apiAllData);
-  });
+  .then(apiAllData => showPhones(apiAllData))
+  
+}
 
 function showPhones(apiAllData) {
   // console.log(apiAllData.data);
   const allData = apiAllData.data;
   const showAllPhones = document.getElementById('show-all-phones');
+  showAllPhones.textContent='';
   for (const data of allData) {
     // console.log(data.phone_name);
     const phoneDiv = document.createElement('div');
-    phoneDiv.innerHTML = `  <div class="card w-96 bg-col-primary shadow-xl">
+    phoneDiv.innerHTML = `  <div class="card bg-col-primary shadow-xl">
     <figure class="px-10 pt-10">
       <img src="${data.image}" alt="Shoes" class="rounded-xl" />
     </figure>
@@ -25,7 +28,7 @@ function showPhones(apiAllData) {
     </div>
   </div>
 `;
-    showAllPhones.appendChild(phoneDiv);
-  }
+ showAllPhones.appendChild(phoneDiv);
+ }
 }
 
