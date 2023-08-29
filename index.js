@@ -9,7 +9,17 @@ fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
 
 function showPhones(apiAllData) {
   // console.log(apiAllData.data);
-  const allData = apiAllData.data;
+  let allData = apiAllData.data;
+  const totalData = allData.length;
+  const showAllBtn = document.getElementById('show-all-btn');
+  if(totalData>10){
+    const showTenData = allData.slice(0,10);
+    allData = showTenData;
+    showAllBtn.parentNode.classList.remove('hidden');
+  }
+  else{
+    showAllBtn.parentNode.classList.add('hidden');
+  }
   const showAllPhones = document.getElementById('show-all-phones');
   showAllPhones.textContent='';
   for (const data of allData) {
