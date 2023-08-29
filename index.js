@@ -15,6 +15,14 @@ function showPhones(apiAllData, isShowAll) {
   let allData = apiAllData.data;
   const totalData = allData.length;
   const showAllBtn = document.getElementById('show-all-btn');
+  const showAllPhones = document.getElementById('show-all-phones');
+
+  if (totalData === 0){
+showAllPhones.textContent='NO DATA FOUND!!!';
+document.getElementById('search-text').value = '';
+return;
+}
+
   if(totalData>10 && !isShowAll){
     const showTenData = allData.slice(0,10);
     allData = showTenData;
@@ -24,7 +32,7 @@ function showPhones(apiAllData, isShowAll) {
     showAllBtn.parentNode.classList.add('hidden');
     document.getElementById('search-text').value = '';
   }
-  const showAllPhones = document.getElementById('show-all-phones');
+  
   showAllPhones.textContent='';
   for (const data of allData) {
     // console.log(data.phone_name);
