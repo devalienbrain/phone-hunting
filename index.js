@@ -11,7 +11,7 @@ fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
 }
 
 function showPhones(apiAllData, isShowAll) {
-  
+  // console.log(apiAllData);
   loadingSpinner.classList.add('hidden');
   let allData = apiAllData.data;
   const totalData = allData.length;
@@ -36,7 +36,6 @@ return;
   
   showAllPhones.textContent='';
   for (const data of allData) {
-    // console.log(data.phone_name);
     const phoneDiv = document.createElement('div');
     phoneDiv.innerHTML = `  <div class="card bg-col-primary shadow-xl">
     <figure class="px-10 pt-10">
@@ -46,7 +45,7 @@ return;
       <h2 class="card-title">${data.phone_name}</h2>
       <p>There are many variations of passages</p>
       <div class="card-actions">
-        <button onclick="showModals(this)" class="btn btn-primary">Show Details</button>
+        <button onclick="showModals('${data.slug}')" class="btn btn-primary">Show Details</button>
       </div>
     </div>
   </div>
@@ -61,9 +60,35 @@ showMatchedPhones(true);
 
 
 // show modals
-function showModals(event){
-//  console.log(event.parentNode.parentNode.children[0].innerText) 
- document.getElementById('name').innerText = event.parentNode.parentNode.children[0].innerText;
- const showDetailsModal = document.getElementById('show-details-modal');
+function showModals(id){
+ 
+fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+  .then(res => res.json())
+  .then(showModalData => setToShowModalData(showModalData))
+
+  document.getElementById('name').innerText = id;
+
+  const showDetailsModal = document.getElementById('show-details-modal');
  showDetailsModal.showModal();
+}
+
+function setToShowModalData(showModalData){
+
+  document.getElementById('modal-image').innerHTML=`<img class="p-5" src="${showModalData.data.image}" alt="" srcset="">`;
+
+  document.getElementById('storage').innerText = showModalData.data.mainFeatures.storage;
+
+  document.getElementById('display-size').innerText = showModalData.data.mainFeatures.displaySize;
+  
+  document.getElementById('chipset').innerText = showModalData.data.mainFeatures.chipSet;
+  
+  document.getElementById('memory').innerText = showModalData.data.mainFeatures.memory;
+  
+  document.getElementById('slug').innerText = showModalData.data.slug;
+  
+  document.getElementById('release-data').innerText = showModalData.data.releaseDate;
+  
+  document.getElementById('brand').innerText = showModalData.data.brand;
+  
+  document.getElementById('gps').innerText = showModalData.data.others.GPS;
 }

@@ -50,10 +50,27 @@
 <!-- Show modal -->
 <!-- Open the modal using ID.showModal() method -->
 <dialog id="show-details-modal" class="modal modal-bottom sm:modal-middle">
-  <form method="dialog" class="modal-box">
+  <form method="dialog" class="modal-box text-left">
+    <div id="modal-image" class="flex justify-center align-center">
+    </div>
     <h3 id="name" class="font-bold text-lg"></h3>
-    <p class="py-4">Press ESC key or click the button below to close</p>
-    <div class="modal-action flex justify-center">
+    
+    <p class="py-4 font-semibold text-xs">Storage: <span id="storage"></span></p>
+
+    <p class="py-4 font-semibold text-xs">Display Size: <span id="display-size"></span></p>
+    
+    <p class="py-4 font-semibold text-xs">Chipset: <span id="chipset"></span></p>
+    
+    <p class="py-4 font-semibold text-xs">Memory: <span id="memory"></span></p>
+    
+    <p class="py-4 font-semibold text-xs">Slug: <span id="slug"></span></p>
+    
+    <p class="py-4 font-semibold text-xs">Release data: <span id="release-data"></span></p>
+    
+    <p class="py-4 font-semibold text-xs">Brand: <span id="brand"></span></p>
+    
+    <p class="py-4 font-semibold text-xs">GPS: <span id="gps"></span></p>
+    <div class="modal-action">
       <!-- if there is a button in form, it will close the modal -->
       <button class="btn">Close</button>
     </div>
